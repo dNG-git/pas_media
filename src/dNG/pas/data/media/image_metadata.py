@@ -52,6 +52,11 @@ This class provides methods for image metadata.
              GNU General Public License 2
 	"""
 
+	instance_class = "dNG.pas.data.media.ImageMetadata"
+	"""
+The qualified name of the class.
+	"""
+
 	get_artist = AbstractMetadata._wrap_getter("artist")
 	"""
 Returns an image embedded artist information if any.

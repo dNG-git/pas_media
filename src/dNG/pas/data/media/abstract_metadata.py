@@ -36,6 +36,11 @@ http://www.direct-netware.de/redirect.py?licenses;gpl
 ----------------------------------------------------------------------------
 NOTE_END //n"""
 
+from dNG.data.json_parser import JsonParser
+from dNG.pas.data.binary import Binary
+from dNG.pas.data.traced_exception import TracedException
+from dNG.pas.module.named_loader import NamedLoader
+
 class AbstractMetadata(object):
 #
 	"""
@@ -48,6 +53,16 @@ Abstract metadata class for media content.
 :since:      v0.1.00
 :license:    http://www.direct-netware.de/redirect.py?licenses;gpl
              GNU General Public License 2
+	"""
+
+	JSON_VERSION = 1
+	"""
+Metadata version for incompatible changes
+	"""
+
+	instance_class = None
+	"""
+The qualified name of the class.
 	"""
 
 	def __init__(self, url, **kwargs):
@@ -117,11 +132,97 @@ Returns embedded copyright information if any.
 		"""
 Returns an embedded description if any.
 
-:return: (str) Image description; None if undefined
+:return: (str) Description; None if undefined
 :since:  v0.1.00
 		"""
 
 		return self.data.get("description")
+	#
+
+	def get_json(self):
+	#
+		"""
+Returns a JSON representation of the metadata.
+
+:return: (str) JSON encoded metadata
+:since:  v0.1.00
+		"""
+
+		data = self._get_json_data()
+		data['_meta_version'] = AbstractMetadata.JSON_VERSION
+		data['_meta_url'] = self.url
+
+		return JsonParser().data2json(data)
+	#
+
+	def _get_json_data(self):
+	#
+		"""
+Returns a dict containing all JSON metadata.
+
+:return: (dict) JSON metadata for export
+:since:  v0.1.00
+		"""
+
+		if (self.__class__.instance_class == None): raise TracedException("The qualified name is not defined.")
+
+		_return = self.data.copy()
+		_return['_py_class'] = self.__class__.instance_class
+
+		return _return
+	#
+
+	def get_mimeclass(self):
+	#
+		"""
+Returns the mime class.
+
+:return: (str) Mime class
+:since:  v0.1.00
+		"""
+
+		return self.data.get("mimeclass")
+	#
+
+	def get_mimetype(self):
+	#
+		"""
+Returns the mime type.
+
+:return: (str) Mime type
+:since:  v0.1.00
+		"""
+
+		return self.data.get("mimetype")
+	#
+
+	def get_url(self):
+	#
+		"""
+Returns the metadata source URL.
+
+:return: (str) Metadata source URL
+:since:  v0.1.00
+		"""
+
+		return self.url
+	#
+
+	def _load_json_data(self, data):
+	#
+		"""
+Load metadata into this metadata object.
+
+:return: (bool) True on success
+:since:  v0.1.00
+		"""
+
+		self.url = data['_meta_url']
+		del(data['_meta_url'])
+
+		self._set(**data)
+
+		return True
 	#
 
 	def _set(self, **kwargs):
@@ -151,6 +252,48 @@ given default one.
 
 		def proxymethod(self): return self.data.get(key, default_value)
 		return proxymethod
+	#
+
+	@staticmethod
+	def load_json(json):
+	#
+		"""
+Load metadata previously exported with the "get_json()" method.
+
+:param json: JSON encoded metadata
+
+:return: (object) Metadata object; None if metadata is incompatible
+:since:  v0.1.00
+		"""
+
+		json = Binary.str(json)
+		data = (JsonParser().json2data(json) if (type(json) == str) else None)
+
+		if (data == None): raise TracedException("Failed to decode JSON metadata")
+		return (AbstractMetadata._load_instance_json_data(data) if ("_meta_version" in data and data['_meta_version'] == AbstractMetadata.JSON_VERSION) else None)
+	#
+
+	@staticmethod
+	def _load_instance_json_data(data, url = None):
+	#
+		"""
+Load metadata into the correct instance.
+
+:param data: Raw metadata dict
+
+:return: (object) Metadata object; None if metadata is incompatible
+:since:  v0.1.00
+		"""
+
+		_return = None
+
+		if (("_meta_url" in data or url != None) and "_py_class" in data):
+		#
+			_return = NamedLoader.get_instance(data['_py_class'], False, url = (data['_meta_url'] if (url == None) else url))
+			if (not _return._load_json_data(data)): _return = None
+		#
+
+		return _return
 	#
 #
 

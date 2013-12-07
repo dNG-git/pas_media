@@ -2,7 +2,7 @@
 ##j## BOF
 
 """
-dNG.pas.data.media.AudioMetadata
+dNG.pas.data.media.StreamMetadata
 """
 """n// NOTE
 ----------------------------------------------------------------------------
@@ -36,91 +36,32 @@ http://www.direct-netware.de/redirect.py?licenses;gpl
 ----------------------------------------------------------------------------
 NOTE_END //n"""
 
-from os import path
+from .abstract_metadata import AbstractMetadata
 
-try: from urllib.parse import unquote
-except ImportError: from urllib import unquote
-
-from .audio_stream_metadata import AudioStreamMetadata
-
-class AudioMetadata(AudioStreamMetadata):
+class StreamMetadata(AbstractMetadata):
 #
 	"""
-This class provides methods for audio metadata.
+This class provides methods for any stream metadata.
 
 :author:     direct Netware Group
 :copyright:  direct Netware Group - All rights reserved
 :package:    pas
-:subpackage: imaging
+:subpackage: media
 :since:      v0.1.00
 :license:    http://www.direct-netware.de/redirect.py?licenses;gpl
              GNU General Public License 2
 	"""
 
-	instance_class = "dNG.pas.data.media.AudioMetadata"
+	instance_class = "dNG.pas.data.media.StreamMetadata"
 	"""
 The qualified name of the class.
 	"""
 
-	get_album = AudioStreamMetadata._wrap_getter("album")
+	get_codec = AbstractMetadata._wrap_getter("codec")
 	"""
-Returns the album name if any.
+Returns the stream codec used as mime type notation.
 
-:return: (str) Album name; None if undefined
-:since:  v0.1.00
-	"""
-
-	get_album_artist = AudioStreamMetadata._wrap_getter("album_artist")
-	"""
-Returns the album artist if any.
-
-:return: (str) Album artist; None if undefined
-:since:  v0.1.00
-	"""
-
-	get_artist = AudioStreamMetadata._wrap_getter("artist")
-	"""
-Returns the artist if any.
-
-:return: (str) Artist; None if undefined
-:since:  v0.1.00
-	"""
-
-	get_genre = AudioStreamMetadata._wrap_getter("genre")
-	"""
-Returns the genre if set.
-
-:return: (int) Genre; None if undefined
-:since:  v0.1.00
-	"""
-
-	get_length = AudioStreamMetadata._wrap_getter("length")
-	"""
-Returns the audio length.
-
-:return: (int) Audio length
-:since:  v0.1.00
-	"""
-
-	def get_title(self):
-	#
-		"""
-Returns the title.
-
-:return: (str) Title
-:since:  v0.1.00
-		"""
-
-		_return = self.data.get("title")
-		if (_return == None): _return = unquote(path.splitext(path.split(self.url)[1])[0])
-		return _return
-	#
-
-	get_track = AudioStreamMetadata._wrap_getter("track")
-	"""
-Returns the track number if any.
-
-:return: (int) Track number; None if undefined
+:return: (str) Stream codec
 :since:  v0.1.00
 	"""
 #
