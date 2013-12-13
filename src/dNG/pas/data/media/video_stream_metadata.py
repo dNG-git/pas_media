@@ -2,7 +2,7 @@
 ##j## BOF
 
 """
-dNG.pas.data.media.StreamMetadata
+dNG.pas.data.media.VideoStreamMetadata
 """
 """n// NOTE
 ----------------------------------------------------------------------------
@@ -36,40 +36,56 @@ http://www.direct-netware.de/redirect.py?licenses;gpl
 ----------------------------------------------------------------------------
 NOTE_END //n"""
 
-from .abstract_metadata import AbstractMetadata
+from .stream_metadata import StreamMetadata
 
-class StreamMetadata(AbstractMetadata):
+class VideoStreamMetadata(StreamMetadata):
 #
 	"""
-This class provides methods for any stream metadata.
+This class provides methods for video stream metadata.
 
 :author:     direct Netware Group
 :copyright:  direct Netware Group - All rights reserved
 :package:    pas
-:subpackage: media
+:subpackage: imaging
 :since:      v0.1.00
 :license:    http://www.direct-netware.de/redirect.py?licenses;gpl
              GNU General Public License 2
 	"""
 
-	instance_class = "dNG.pas.data.media.StreamMetadata"
+	instance_class = "dNG.pas.data.media.VideoStreamMetadata"
 	"""
 The qualified name of the class.
 	"""
 
-	get_codec = AbstractMetadata._wrap_getter("codec")
+	get_bitrate = StreamMetadata._wrap_getter("bitrate")
 	"""
-Returns the stream codec used as mime type notation.
+Returns the bitrate.
 
-:return: (str) Stream codec
+:return: (str) Video bitrate; None if unknown
 :since:  v0.1.00
 	"""
 
-	get_codec_profile = AbstractMetadata._wrap_getter("codec_profile")
+	get_framerate = StreamMetadata._wrap_getter("framerate")
 	"""
-Returns the stream codec profile.
+Returns the framerate.
 
-:return: (str) Stream codec profile
+:return: (str) Video framerate; None if unknown
+:since:  v0.1.00
+	"""
+
+	get_height = StreamMetadata._wrap_getter("height")
+	"""
+Returns the video height.
+
+:return: (int) Video stream height
+:since:  v0.1.00
+	"""
+
+	get_width = StreamMetadata._wrap_getter("width")
+	"""
+Returns the video width.
+
+:return: (int) Video stream width
 :since:  v0.1.00
 	"""
 #
