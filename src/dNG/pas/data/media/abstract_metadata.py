@@ -38,8 +38,8 @@ NOTE_END //n"""
 
 from dNG.data.json_parser import JsonParser
 from dNG.pas.data.binary import Binary
-from dNG.pas.data.traced_exception import TracedException
 from dNG.pas.module.named_loader import NamedLoader
+from dNG.pas.runtime.value_exception import ValueException
 
 class AbstractMetadata(object):
 #
@@ -164,7 +164,7 @@ Returns a dict containing all JSON metadata.
 :since:  v0.1.00
 		"""
 
-		if (self.__class__.instance_class == None): raise TracedException("The qualified name is not defined.")
+		if (self.__class__.instance_class == None): raise ValueException("The qualified name is not defined.")
 
 		_return = self.data.copy()
 		_return['_py_class'] = self.__class__.instance_class
@@ -269,7 +269,7 @@ Load metadata previously exported with the "get_json()" method.
 		json = Binary.str(json)
 		data = (JsonParser().json2data(json) if (type(json) == str) else None)
 
-		if (data == None): raise TracedException("Failed to decode JSON metadata")
+		if (data == None): raise ValueException("Failed to decode JSON metadata")
 		return (AbstractMetadata._load_instance_json_data(data) if ("_meta_version" in data and data['_meta_version'] == AbstractMetadata.JSON_VERSION) else None)
 	#
 

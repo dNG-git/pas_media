@@ -36,7 +36,7 @@ http://www.direct-netware.de/redirect.py?licenses;gpl
 ----------------------------------------------------------------------------
 NOTE_END //n"""
 
-from dNG.pas.data.traced_exception import TracedException
+from dNG.pas.runtime.not_implemented_exception import NotImplementedException
 
 class Abstract(object):
 #
@@ -61,7 +61,7 @@ Return the metadata for this URL.
 :since:  v0.1.00
 		"""
 
-		raise TracedException("Not implemented")
+		raise NotImplementedException()
 	#
 
 	def open_url(self, url):

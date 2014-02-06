@@ -65,6 +65,14 @@ Returns the bitrate.
 :since:  v0.1.00
 	"""
 
+	get_bpp = StreamMetadata._wrap_getter("bpp")
+	"""
+Returns the image bits per pixel value.
+
+:return: (int) Image bpp
+:since:  v0.1.00
+	"""
+
 	get_framerate = StreamMetadata._wrap_getter("framerate")
 	"""
 Returns the framerate.
