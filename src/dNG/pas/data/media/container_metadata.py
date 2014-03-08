@@ -36,6 +36,8 @@ http://www.direct-netware.de/redirect.py?licenses;gpl
 ----------------------------------------------------------------------------
 NOTE_END //n"""
 
+# pylint: disable=import-error,no-name-in-module
+
 from os import path
 
 try: from urllib.parse import unquote
@@ -168,6 +170,8 @@ Returns a dict containing all JSON metadata.
 :return: (dict) JSON metadata for export
 :since:  v0.1.00
 		"""
+
+		# pylint: disable=protected-access
 
 		_return = AbstractMetadata._get_json_data(self)
 

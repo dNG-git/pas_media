@@ -36,7 +36,7 @@ http://www.direct-netware.de/redirect.py?licenses;gpl
 ----------------------------------------------------------------------------
 NOTE_END //n"""
 
-from dNG.data.json_parser import JsonParser
+from dNG.data.json_resource import JsonResource
 from dNG.pas.data.binary import Binary
 from dNG.pas.module.named_loader import NamedLoader
 from dNG.pas.runtime.value_exception import ValueException
@@ -152,7 +152,7 @@ Returns a JSON representation of the metadata.
 		data['_meta_version'] = AbstractMetadata.JSON_VERSION
 		data['_meta_url'] = self.url
 
-		return JsonParser().data2json(data)
+		return JsonResource().data_to_json(data)
 	#
 
 	def _get_json_data(self):
@@ -217,6 +217,8 @@ Load metadata into this metadata object.
 :since:  v0.1.00
 		"""
 
+		# pylint: disable=star-args
+
 		self.url = data['_meta_url']
 		del(data['_meta_url'])
 
@@ -267,7 +269,7 @@ Load metadata previously exported with the "get_json()" method.
 		"""
 
 		json = Binary.str(json)
-		data = (JsonParser().json2data(json) if (type(json) == str) else None)
+		data = (JsonResource().json_to_data(json) if (type(json) == str) else None)
 
 		if (data == None): raise ValueException("Failed to decode JSON metadata")
 		return (AbstractMetadata._load_instance_json_data(data) if ("_meta_version" in data and data['_meta_version'] == AbstractMetadata.JSON_VERSION) else None)
@@ -284,6 +286,8 @@ Load metadata into the correct instance.
 :return: (object) Metadata object; None if metadata is incompatible
 :since:  v0.1.00
 		"""
+
+		# pylint: disable=protected-access
 
 		_return = None
 

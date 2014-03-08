@@ -52,6 +52,8 @@ This abstract class defines methods to open a file and get metadata for it.
              GNU General Public License 2
 	"""
 
+	# pylint: disable=unused-argument
+
 	def get_metadata(self):
 	#
 		"""
