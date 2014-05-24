@@ -100,7 +100,37 @@ Returns the total length of the video or its container.
 :since:  v0.1.00
 	"""
 
-	def audio_streams_get(self, position = None):
+	def get_audio_stream_codecs(self):
+	#
+		"""
+Returns the audio codecs used as a indexed list of mime type notations.
+
+:return: (list) List of audio codecs
+:since:  v0.1.00
+		"""
+
+		_return = [ ]
+		for stream in self.audio_streams: _return.append(stream.get_codec())
+
+		return _return
+	#
+
+	def get_audio_stream_mimetypes(self):
+	#
+		"""
+Returns the mime-types of all audio streams as a indexed list.
+
+:return: (list) List of mime-type strings
+:since:  v0.1.00
+		"""
+
+		_return = [ ]
+		for stream in self.audio_streams: _return.append(stream.get_mimetype())
+
+		return _return
+	#
+
+	def get_audio_streams(self, position = None):
 	#
 		"""
 Returns a list of audio stream metadata or the audio stream metadata
@@ -120,22 +150,7 @@ identified with the given position.
 		return _return
 	#
 
-	def audio_streams_get_codecs(self):
-	#
-		"""
-Returns the audio codecs used as a indexed list of mime type notations.
-
-:return: (list) List of audio codecs
-:since:  v0.1.00
-		"""
-
-		_return = [ ]
-		for stream in self.audio_streams: _return.append(stream.get_codec())
-
-		return _return
-	#
-
-	def audio_streams_get_count(self):
+	def get_audio_streams_count(self):
 	#
 		"""
 Returns the number of audio streams in the file.
@@ -145,21 +160,6 @@ Returns the number of audio streams in the file.
 		"""
 
 		return len(self.audio_streams)
-	#
-
-	def audio_streams_get_mimetypes(self):
-	#
-		"""
-Returns the mime-types of all audio streams as a indexed list.
-
-:return: (list) List of mime-type strings
-:since:  v0.1.00
-		"""
-
-		_return = [ ]
-		for stream in self.audio_streams: _return.append(stream.get_mimetype())
-
-		return _return
 	#
 
 	def _get_json_data(self):
@@ -190,6 +190,131 @@ Returns a dict containing all JSON metadata.
 		return _return
 	#
 
+	def get_other_stream_codecs(self):
+	#
+		"""
+Returns the stream codecs used as a indexed list of mime type notations.
+
+:return: (list) List of stream codecs
+:since:  v0.1.00
+		"""
+
+		_return = [ ]
+		for stream in self.other_streams: _return.append(stream.get_codec())
+
+		return _return
+	#
+
+	def get_other_stream_mimetypes(self):
+	#
+		"""
+Returns the mime-types of all other streams as a indexed list.
+
+:return: (list) List of mime-type strings
+:since:  v0.1.00
+		"""
+
+		_return = [ ]
+		for stream in self.other_streams: _return.append(stream.get_mimetype())
+
+		return _return
+	#
+
+	def get_other_streams(self, position = None):
+	#
+		"""
+Returns a list of other stream metadata or the other stream metadata
+identified with the given position.
+
+:return: (mixed) List of objects or metadata object; None on error
+:since:  v0.1.00
+		"""
+
+		if (position == None):
+		#
+			_return = [ ]
+			for stream in self.other_streams: _return.append(stream)
+		#
+		else: _return = (self.other_streams[position] if (position < len(self.other_streams)) else None)
+
+		return _return
+	#
+
+	def get_other_streams_count(self):
+	#
+		"""
+Returns the number of other streams in the file.
+
+:return: (int) Number of other streams
+:since:  v0.1.00
+		"""
+
+		return len(self.other_streams)
+	#
+
+	def get_text_stream_codecs(self):
+	#
+		"""
+Returns the text stream codecs used as a indexed list of mime type
+notations.
+
+:return: (list) List of text stream codecs
+:since:  v0.1.00
+		"""
+
+		_return = [ ]
+		for stream in self.text_streams: _return.append(stream.get_codec())
+
+		return _return
+	#
+
+	def get_text_stream_mimetypes(self):
+	#
+		"""
+Returns the mime-types of all text streams as a indexed list.
+
+:return: (list) List of mime-type strings
+:since:  v0.1.00
+		"""
+
+		_return = [ ]
+		for stream in self.text_streams: _return.append(stream.get_mimetype())
+
+		return _return
+	#
+
+	def get_text_streams(self, position = None):
+	#
+		"""
+Returns a list of text stream metadata or the text stream metadata
+identified with the given position.
+
+:return: (mixed) List of objects or metadata object; None on error
+:since:  v0.1.00
+		"""
+
+		if (position == None):
+		#
+			_return = [ ]
+			for stream in self.text_streams: _return.append(stream)
+		#
+		else: _return = (self.text_streams[position] if (position < len(self.text_streams)) else None)
+
+		return _return
+	#
+
+	def get_text_streams_count(self):
+	#
+		"""
+Returns the number of text streams in the file.
+
+:return: (int) Number of text streams
+:since:  v0.1.00
+		"""
+
+		return len(self.text_streams)
+	#
+
 	def get_title(self):
 	#
 		"""
@@ -202,6 +327,68 @@ Returns the title.
 		_return = self.data.get("title")
 		if (_return == None): _return = unquote(path.splitext(path.split(self.url)[1])[0])
 		return _return
+	#
+
+	def get_video_stream_codecs(self):
+	#
+		"""
+Returns the video codecs used as a indexed list of mime type notations.
+
+:return: (list) List of video codecs
+:since:  v0.1.00
+		"""
+
+		_return = [ ]
+		for stream in self.video_streams: _return.append(stream.get_codec())
+
+		return _return
+	#
+
+	def get_video_stream_mimetypes(self):
+	#
+		"""
+Returns the mime-types of all video streams as a indexed list.
+
+:return: (list) List of mime-type strings
+:since:  v0.1.00
+		"""
+
+		_return = [ ]
+		for stream in self.video_streams: _return.append(stream.get_mimetype())
+
+		return _return
+	#
+
+	def get_video_streams(self, position = None):
+	#
+		"""
+Returns a list of video stream metadata or the video stream metadata
+identified with the given position.
+
+:return: (mixed) List of objects or metadata object; None on error
+:since:  v0.1.00
+		"""
+
+		if (position == None):
+		#
+			_return = [ ]
+			for stream in self.video_streams: _return.append(stream)
+		#
+		else: _return = (self.video_streams[position] if (position < len(self.video_streams)) else None)
+
+		return _return
+	#
+
+	def get_video_streams_count(self):
+	#
+		"""
+Returns the number of video streams in the file.
+
+:return: (int) Number of video streams
+:since:  v0.1.00
+		"""
+
+		return len(self.video_streams)
 	#
 
 	def _load_json_data(self, data):
@@ -234,193 +421,6 @@ Load metadata into this metadata object.
 			_return = AbstractMetadata._load_json_data(self, data)
 		#
 		else: _return = False
-
-		return _return
-	#
-
-	def other_streams_get(self, position = None):
-	#
-		"""
-Returns a list of other stream metadata or the other stream metadata
-identified with the given position.
-
-:return: (mixed) List of objects or metadata object; None on error
-:since:  v0.1.00
-		"""
-
-		if (position == None):
-		#
-			_return = [ ]
-			for stream in self.other_streams: _return.append(stream)
-		#
-		else: _return = (self.other_streams[position] if (position < len(self.other_streams)) else None)
-
-		return _return
-	#
-
-	def other_streams_get_codecs(self):
-	#
-		"""
-Returns the stream codecs used as a indexed list of mime type notations.
-
-:return: (list) List of stream codecs
-:since:  v0.1.00
-		"""
-
-		_return = [ ]
-		for stream in self.other_streams: _return.append(stream.get_codec())
-
-		return _return
-	#
-
-	def other_streams_get_count(self):
-	#
-		"""
-Returns the number of other streams in the file.
-
-:return: (int) Number of other streams
-:since:  v0.1.00
-		"""
-
-		return len(self.other_streams)
-	#
-
-	def other_streams_get_mimetypes(self):
-	#
-		"""
-Returns the mime-types of all other streams as a indexed list.
-
-:return: (list) List of mime-type strings
-:since:  v0.1.00
-		"""
-
-		_return = [ ]
-		for stream in self.other_streams: _return.append(stream.get_mimetype())
-
-		return _return
-	#
-
-	def text_streams_get(self, position = None):
-	#
-		"""
-Returns a list of text stream metadata or the text stream metadata
-identified with the given position.
-
-:return: (mixed) List of objects or metadata object; None on error
-:since:  v0.1.00
-		"""
-
-		if (position == None):
-		#
-			_return = [ ]
-			for stream in self.text_streams: _return.append(stream)
-		#
-		else: _return = (self.text_streams[position] if (position < len(self.text_streams)) else None)
-
-		return _return
-	#
-
-	def text_streams_get_codecs(self):
-	#
-		"""
-Returns the text stream codecs used as a indexed list of mime type
-notations.
-
-:return: (list) List of text stream codecs
-:since:  v0.1.00
-		"""
-
-		_return = [ ]
-		for stream in self.text_streams: _return.append(stream.get_codec())
-
-		return _return
-	#
-
-	def text_streams_get_count(self):
-	#
-		"""
-Returns the number of text streams in the file.
-
-:return: (int) Number of text streams
-:since:  v0.1.00
-		"""
-
-		return len(self.text_streams)
-	#
-
-	def text_streams_get_mimetypes(self):
-	#
-		"""
-Returns the mime-types of all text streams as a indexed list.
-
-:return: (list) List of mime-type strings
-:since:  v0.1.00
-		"""
-
-		_return = [ ]
-		for stream in self.text_streams: _return.append(stream.get_mimetype())
-
-		return _return
-	#
-
-	def video_streams_get(self, position = None):
-	#
-		"""
-Returns a list of video stream metadata or the video stream metadata
-identified with the given position.
-
-:return: (mixed) List of objects or metadata object; None on error
-:since:  v0.1.00
-		"""
-
-		if (position == None):
-		#
-			_return = [ ]
-			for stream in self.video_streams: _return.append(stream)
-		#
-		else: _return = (self.video_streams[position] if (position < len(self.video_streams)) else None)
-
-		return _return
-	#
-
-	def video_streams_get_codecs(self):
-	#
-		"""
-Returns the video codecs used as a indexed list of mime type notations.
-
-:return: (list) List of video codecs
-:since:  v0.1.00
-		"""
-
-		_return = [ ]
-		for stream in self.video_streams: _return.append(stream.get_codec())
-
-		return _return
-	#
-
-	def video_streams_get_count(self):
-	#
-		"""
-Returns the number of video streams in the file.
-
-:return: (int) Number of video streams
-:since:  v0.1.00
-		"""
-
-		return len(self.video_streams)
-	#
-
-	def video_streams_get_mimetypes(self):
-	#
-		"""
-Returns the mime-types of all video streams as a indexed list.
-
-:return: (list) List of mime-type strings
-:since:  v0.1.00
-		"""
-
-		_return = [ ]
-		for stream in self.video_streams: _return.append(stream.get_mimetype())
 
 		return _return
 	#
