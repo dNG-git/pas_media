@@ -272,7 +272,7 @@ Load metadata previously exported with the "get_json()" method.
 		data = (JsonResource().json_to_data(json) if (type(json) == str) else None)
 
 		if (data == None): raise ValueException("Failed to decode JSON metadata")
-		return (AbstractMetadata._load_instance_json_data(data) if ("_meta_version" in data and data['_meta_version'] == AbstractMetadata.JSON_VERSION) else None)
+		return (AbstractMetadata._load_instance_json_data(data) if (data.get("_meta_version") == AbstractMetadata.JSON_VERSION) else None)
 	#
 
 	@staticmethod
