@@ -109,7 +109,7 @@ Returns the title.
 		"""
 
 		_return = self.data.get("title")
-		if (_return == None): _return = unquote(path.splitext(path.split(self.url)[1])[0])
+		if (_return is None): _return = unquote(path.splitext(path.split(self.url)[1])[0])
 		return _return
 	#
 

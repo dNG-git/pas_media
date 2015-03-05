@@ -135,7 +135,7 @@ identified with the given position.
 :since:  v0.1.00
 		"""
 
-		if (position == None):
+		if (position is None):
 		#
 			_return = [ ]
 			for stream in self.audio_streams: _return.append(stream)
@@ -225,7 +225,7 @@ identified with the given position.
 :since:  v0.1.00
 		"""
 
-		if (position == None):
+		if (position is None):
 		#
 			_return = [ ]
 			for stream in self.other_streams: _return.append(stream)
@@ -288,7 +288,7 @@ identified with the given position.
 :since:  v0.1.00
 		"""
 
-		if (position == None):
+		if (position is None):
 		#
 			_return = [ ]
 			for stream in self.text_streams: _return.append(stream)
@@ -320,7 +320,7 @@ Returns the title.
 		"""
 
 		_return = self.data.get("title")
-		if (_return == None): _return = unquote(path.splitext(path.split(self.url)[1])[0])
+		if (_return is None): _return = unquote(path.splitext(path.split(self.url)[1])[0])
 		return _return
 	#
 
@@ -364,7 +364,7 @@ identified with the given position.
 :since:  v0.1.00
 		"""
 
-		if (position == None):
+		if (position is None):
 		#
 			_return = [ ]
 			for stream in self.video_streams: _return.append(stream)

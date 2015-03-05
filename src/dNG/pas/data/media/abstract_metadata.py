@@ -159,7 +159,7 @@ Returns a dict containing all JSON metadata.
 :since:  v0.1.00
 		"""
 
-		if (self.__class__.instance_class == None): raise ValueException("The qualified name is not defined.")
+		if (self.__class__.instance_class is None): raise ValueException("The qualified name is not defined.")
 
 		_return = self.data.copy()
 		_return['_py_class'] = self.__class__.instance_class
@@ -264,9 +264,9 @@ Load metadata previously exported with the "get_json()" method.
 		"""
 
 		json = Binary.str(json)
-		data = (JsonResource().json_to_data(json) if (type(json) == str) else None)
+		data = (JsonResource().json_to_data(json) if (type(json) is str) else None)
 
-		if (data == None): raise ValueException("Failed to decode JSON metadata")
+		if (data is None): raise ValueException("Failed to decode JSON metadata")
 		return (AbstractMetadata._load_instance_json_data(data) if (data.get("_meta_version") == AbstractMetadata.JSON_VERSION) else None)
 	#
 
@@ -286,9 +286,9 @@ Load metadata into the correct instance.
 
 		_return = None
 
-		if (("_meta_url" in data or url != None) and "_py_class" in data):
+		if (("_meta_url" in data or url is not None) and "_py_class" in data):
 		#
-			_return = NamedLoader.get_instance(data['_py_class'], False, url = (data['_meta_url'] if (url == None) else url))
+			_return = NamedLoader.get_instance(data['_py_class'], False, url = (data['_meta_url'] if (url is None) else url))
 			if (not _return._load_json_data(data)): _return = None
 		#
 
