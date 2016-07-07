@@ -31,21 +31,21 @@ https://www.direct-netware.de/redirect?licenses;gpl
 #echo(__FILEPATH__)#
 """
 
+from dNG.data.binary import Binary
 from dNG.data.json_resource import JsonResource
-from dNG.pas.data.binary import Binary
-from dNG.pas.module.named_loader import NamedLoader
-from dNG.pas.runtime.value_exception import ValueException
+from dNG.module.named_loader import NamedLoader
+from dNG.runtime.value_exception import ValueException
 
 class AbstractMetadata(object):
 #
 	"""
 Abstract metadata class for media content.
 
-:author:     direct Netware Group
+:author:     direct Netware Group et al.
 :copyright:  direct Netware Group - All rights reserved
 :package:    pas
-:subpackage: imaging
-:since:      v0.1.00
+:subpackage: media
+:since:      v0.2.00
 :license:    https://www.direct-netware.de/redirect?licenses;gpl
              GNU General Public License 2
 	"""
@@ -67,7 +67,7 @@ Constructor __init__(AbstractMetadata)
 
 :param url: Metadata source URL
 
-:since: v0.1.00
+:since: v0.2.00
 		"""
 
 		self.data = { }
@@ -88,7 +88,7 @@ Metadata source URL
 Return the requested values.
 
 :return: (dict) Requested values
-:since:  v0.1.00
+:since:  v0.2.00
 		"""
 
 		_return = { }
@@ -104,7 +104,7 @@ Return the requested values.
 Returns an embedded comment if any.
 
 :return: (str) Comment; None if undefined
-:since:  v0.1.00
+:since:  v0.2.00
 		"""
 
 		return self.data.get("comment")
@@ -116,7 +116,7 @@ Returns an embedded comment if any.
 Returns embedded copyright information if any.
 
 :return: (str) Copyright information; None if undefined
-:since:  v0.1.00
+:since:  v0.2.00
 		"""
 
 		return self.data.get("copyright")
@@ -128,7 +128,7 @@ Returns embedded copyright information if any.
 Returns an embedded description if any.
 
 :return: (str) Description; None if undefined
-:since:  v0.1.00
+:since:  v0.2.00
 		"""
 
 		return self.data.get("description")
@@ -140,7 +140,7 @@ Returns an embedded description if any.
 Returns a JSON representation of the metadata.
 
 :return: (str) JSON encoded metadata
-:since:  v0.1.00
+:since:  v0.2.00
 		"""
 
 		data = self._get_json_data()
@@ -156,7 +156,7 @@ Returns a JSON representation of the metadata.
 Returns a dict containing all JSON metadata.
 
 :return: (dict) JSON metadata for export
-:since:  v0.1.00
+:since:  v0.2.00
 		"""
 
 		if (self.__class__.instance_class is None): raise ValueException("The qualified name is not defined.")
@@ -173,7 +173,7 @@ Returns a dict containing all JSON metadata.
 Returns the mime class.
 
 :return: (str) Mime class
-:since:  v0.1.00
+:since:  v0.2.00
 		"""
 
 		return self.data.get("mimeclass")
@@ -185,7 +185,7 @@ Returns the mime class.
 Returns the mime type.
 
 :return: (str) Mime type
-:since:  v0.1.00
+:since:  v0.2.00
 		"""
 
 		return self.data.get("mimetype")
@@ -197,7 +197,7 @@ Returns the mime type.
 Returns the metadata source URL.
 
 :return: (str) Metadata source URL
-:since:  v0.1.00
+:since:  v0.2.00
 		"""
 
 		return self.url
@@ -209,7 +209,7 @@ Returns the metadata source URL.
 Load metadata into this metadata object.
 
 :return: (bool) True on success
-:since:  v0.1.00
+:since:  v0.2.00
 		"""
 
 		# pylint: disable=star-args
@@ -227,7 +227,7 @@ Load metadata into this metadata object.
 		"""
 Sets values given as keyword arguments to this method.
 
-:since: v0.1.00
+:since: v0.2.00
 		"""
 
 		self.data.update(kwargs)
@@ -244,7 +244,7 @@ given default one.
 :param default_value: Default value if undefined
 
 :return: (object) Proxy method
-:since:  v0.1.00
+:since:  v0.2.00
 		"""
 
 		def proxymethod(self): return self.data.get(key, default_value)
@@ -260,7 +260,7 @@ Load metadata previously exported with the "get_json()" method.
 :param json: JSON encoded metadata
 
 :return: (object) Metadata object; None if metadata is incompatible
-:since:  v0.1.00
+:since:  v0.2.00
 		"""
 
 		json = Binary.str(json)
@@ -279,7 +279,7 @@ Load metadata into the correct instance.
 :param data: Raw metadata dict
 
 :return: (object) Metadata object; None if metadata is incompatible
-:since:  v0.1.00
+:since:  v0.2.00
 		"""
 
 		# pylint: disable=protected-access

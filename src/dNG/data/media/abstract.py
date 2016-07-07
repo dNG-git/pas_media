@@ -31,19 +31,19 @@ https://www.direct-netware.de/redirect?licenses;gpl
 #echo(__FILEPATH__)#
 """
 
-from dNG.pas.data.supports_mixin import SupportsMixin
-from dNG.pas.runtime.not_implemented_exception import NotImplementedException
+from dNG.data.supports_mixin import SupportsMixin
+from dNG.runtime.not_implemented_exception import NotImplementedException
 
 class Abstract(SupportsMixin):
 #
 	"""
 This abstract class defines methods to open a file and get metadata for it.
 
-:author:     direct Netware Group
+:author:     direct Netware Group et al.
 :copyright:  direct Netware Group - All rights reserved
 :package:    pas
 :subpackage: media
-:since:      v0.1.00
+:since:      v0.2.00
 :license:    https://www.direct-netware.de/redirect?licenses;gpl
              GNU General Public License 2
 	"""
@@ -56,7 +56,7 @@ This abstract class defines methods to open a file and get metadata for it.
 Returns the metadata for this URL.
 
 :return: (object) Metadata object
-:since:  v0.1.00
+:since:  v0.2.00
 		"""
 
 		raise NotImplementedException()
@@ -70,7 +70,7 @@ Initializes an media instance for the given URL.
 :param url: URL
 
 :return: (bool) True on success
-:since:  v0.1.00
+:since:  v0.2.00
 		"""
 
 		return False
@@ -81,7 +81,7 @@ Initializes an media instance for the given URL.
 		"""
 Saves the media instance using the defined constraints.
 
-:since: v0.1.02
+:since: v0.2.00
 		"""
 
 		raise NotImplementedException()
@@ -96,7 +96,7 @@ Returns true if the given mime type is supported.
 :param mimetype: Mime type to check
 
 :return: (bool) True if supported
-:since:  v0.1.02
+:since:  v0.2.00
 		"""
 
 		return False

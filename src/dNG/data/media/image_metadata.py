@@ -31,94 +31,65 @@ https://www.direct-netware.de/redirect?licenses;gpl
 #echo(__FILEPATH__)#
 """
 
-# pylint: disable=import-error,no-name-in-module
+from .abstract_metadata import AbstractMetadata
 
-from os import path
-
-try: from urllib.parse import unquote
-except ImportError: from urllib import unquote
-
-from .audio_stream_metadata import AudioStreamMetadata
-
-class AudioMetadata(AudioStreamMetadata):
+class ImageMetadata(AbstractMetadata):
 #
 	"""
-This class provides methods for audio metadata.
+This class provides methods for image metadata.
 
-:author:     direct Netware Group
+:author:     direct Netware Group et al.
 :copyright:  direct Netware Group - All rights reserved
 :package:    pas
-:subpackage: imaging
-:since:      v0.1.00
+:subpackage: media
+:since:      v0.2.00
 :license:    https://www.direct-netware.de/redirect?licenses;gpl
              GNU General Public License 2
 	"""
 
-	instance_class = "dNG.pas.data.media.AudioMetadata"
+	instance_class = "dNG.data.media.ImageMetadata"
 	"""
 The qualified name of the class.
 	"""
 
-	get_album = AudioStreamMetadata._wrap_getter("album")
+	get_artist = AbstractMetadata._wrap_getter("artist")
 	"""
-Returns the album name if any.
+Returns an image embedded artist information if any.
 
-:return: (str) Album name; None if undefined
-:since:  v0.1.00
-	"""
-
-	get_album_artist = AudioStreamMetadata._wrap_getter("album_artist")
-	"""
-Returns the album artist if any.
-
-:return: (str) Album artist; None if undefined
-:since:  v0.1.00
+:return: (str) Artist information; None if undefined
+:since:  v0.2.00
 	"""
 
-	get_artist = AudioStreamMetadata._wrap_getter("artist")
+	get_bpp = AbstractMetadata._wrap_getter("bpp")
 	"""
-Returns the artist if any.
+Returns the image bits per pixel value.
 
-:return: (str) Artist; None if undefined
-:since:  v0.1.00
-	"""
-
-	get_genre = AudioStreamMetadata._wrap_getter("genre")
-	"""
-Returns the genre if set.
-
-:return: (int) Genre; None if undefined
-:since:  v0.1.00
+:return: (int) Image bpp
+:since:  v0.2.00
 	"""
 
-	get_length = AudioStreamMetadata._wrap_getter("length")
+	get_height = AbstractMetadata._wrap_getter("height")
 	"""
-Returns the audio length.
+Returns the image height.
 
-:return: (int) Audio length
-:since:  v0.1.00
+:return: (int) Image height
+:since:  v0.2.00
 	"""
 
-	def get_title(self):
-	#
-		"""
-Returns the title.
-
-:return: (str) Title
-:since:  v0.1.00
-		"""
-
-		_return = self.data.get("title")
-		if (_return is None): _return = unquote(path.splitext(path.split(self.url)[1])[0])
-		return _return
-	#
-
-	get_track = AudioStreamMetadata._wrap_getter("track")
+	get_producer = AbstractMetadata._wrap_getter("producer")
 	"""
-Returns the track number if any.
+Returns the image device or software producer for the image.
 
-:return: (int) Track number; None if undefined
-:since:  v0.1.00
+:return: (str) Mime type
+:since:  v0.2.00
+	"""
+
+	get_width = AbstractMetadata._wrap_getter("width")
+	"""
+Returns the image width.
+
+:return: (int) Image width
+:since:  v0.2.00
 	"""
 #
 

@@ -45,16 +45,16 @@ class ContainerMetadata(AbstractMetadata):
 	"""
 This class provides methods for container metadata.
 
-:author:     direct Netware Group
+:author:     direct Netware Group et al.
 :copyright:  direct Netware Group - All rights reserved
 :package:    pas
-:subpackage: imaging
-:since:      v0.1.00
+:subpackage: media
+:since:      v0.2.00
 :license:    https://www.direct-netware.de/redirect?licenses;gpl
              GNU General Public License 2
 	"""
 
-	instance_class = "dNG.pas.data.media.ContainerMetadata"
+	instance_class = "dNG.data.media.ContainerMetadata"
 	"""
 The qualified name of the class.
 	"""
@@ -64,7 +64,7 @@ The qualified name of the class.
 		"""
 Constructor __init__(ContainerMetadata)
 
-:since: v0.1.00
+:since: v0.2.00
 		"""
 
 		AbstractMetadata.__init__(self, url, **kwargs)
@@ -92,7 +92,7 @@ List of video streams
 Returns the total length of the video or its container.
 
 :return: (int) Container length
-:since:  v0.1.00
+:since:  v0.2.00
 	"""
 
 	def get_audio_stream_codecs(self):
@@ -101,7 +101,7 @@ Returns the total length of the video or its container.
 Returns the audio codecs used as a indexed list of mime type notations.
 
 :return: (list) List of audio codecs
-:since:  v0.1.00
+:since:  v0.2.00
 		"""
 
 		_return = [ ]
@@ -116,7 +116,7 @@ Returns the audio codecs used as a indexed list of mime type notations.
 Returns the mime-types of all audio streams as a indexed list.
 
 :return: (list) List of mime-type strings
-:since:  v0.1.00
+:since:  v0.2.00
 		"""
 
 		_return = [ ]
@@ -132,7 +132,7 @@ Returns a list of audio stream metadata or the audio stream metadata
 identified with the given position.
 
 :return: (mixed) List of objects or metadata object; None on error
-:since:  v0.1.00
+:since:  v0.2.00
 		"""
 
 		if (position is None):
@@ -151,7 +151,7 @@ identified with the given position.
 Returns the number of audio streams in the file.
 
 :return: (int) Number of audio streams
-:since:  v0.1.00
+:since:  v0.2.00
 		"""
 
 		return len(self.audio_streams)
@@ -163,7 +163,7 @@ Returns the number of audio streams in the file.
 Returns a dict containing all JSON metadata.
 
 :return: (dict) JSON metadata for export
-:since:  v0.1.00
+:since:  v0.2.00
 		"""
 
 		# pylint: disable=protected-access
@@ -191,7 +191,7 @@ Returns a dict containing all JSON metadata.
 Returns the stream codecs used as a indexed list of mime type notations.
 
 :return: (list) List of stream codecs
-:since:  v0.1.00
+:since:  v0.2.00
 		"""
 
 		_return = [ ]
@@ -206,7 +206,7 @@ Returns the stream codecs used as a indexed list of mime type notations.
 Returns the mime-types of all other streams as a indexed list.
 
 :return: (list) List of mime-type strings
-:since:  v0.1.00
+:since:  v0.2.00
 		"""
 
 		_return = [ ]
@@ -222,7 +222,7 @@ Returns a list of other stream metadata or the other stream metadata
 identified with the given position.
 
 :return: (mixed) List of objects or metadata object; None on error
-:since:  v0.1.00
+:since:  v0.2.00
 		"""
 
 		if (position is None):
@@ -241,7 +241,7 @@ identified with the given position.
 Returns the number of other streams in the file.
 
 :return: (int) Number of other streams
-:since:  v0.1.00
+:since:  v0.2.00
 		"""
 
 		return len(self.other_streams)
@@ -254,7 +254,7 @@ Returns the text stream codecs used as a indexed list of mime type
 notations.
 
 :return: (list) List of text stream codecs
-:since:  v0.1.00
+:since:  v0.2.00
 		"""
 
 		_return = [ ]
@@ -269,7 +269,7 @@ notations.
 Returns the mime-types of all text streams as a indexed list.
 
 :return: (list) List of mime-type strings
-:since:  v0.1.00
+:since:  v0.2.00
 		"""
 
 		_return = [ ]
@@ -285,7 +285,7 @@ Returns a list of text stream metadata or the text stream metadata
 identified with the given position.
 
 :return: (mixed) List of objects or metadata object; None on error
-:since:  v0.1.00
+:since:  v0.2.00
 		"""
 
 		if (position is None):
@@ -304,7 +304,7 @@ identified with the given position.
 Returns the number of text streams in the file.
 
 :return: (int) Number of text streams
-:since:  v0.1.00
+:since:  v0.2.00
 		"""
 
 		return len(self.text_streams)
@@ -316,7 +316,7 @@ Returns the number of text streams in the file.
 Returns the title.
 
 :return: (str) Title
-:since:  v0.1.00
+:since:  v0.2.00
 		"""
 
 		_return = self.data.get("title")
@@ -330,7 +330,7 @@ Returns the title.
 Returns the video codecs used as a indexed list of mime type notations.
 
 :return: (list) List of video codecs
-:since:  v0.1.00
+:since:  v0.2.00
 		"""
 
 		_return = [ ]
@@ -345,7 +345,7 @@ Returns the video codecs used as a indexed list of mime type notations.
 Returns the mime-types of all video streams as a indexed list.
 
 :return: (list) List of mime-type strings
-:since:  v0.1.00
+:since:  v0.2.00
 		"""
 
 		_return = [ ]
@@ -361,7 +361,7 @@ Returns a list of video stream metadata or the video stream metadata
 identified with the given position.
 
 :return: (mixed) List of objects or metadata object; None on error
-:since:  v0.1.00
+:since:  v0.2.00
 		"""
 
 		if (position is None):
@@ -380,7 +380,7 @@ identified with the given position.
 Returns the number of video streams in the file.
 
 :return: (int) Number of video streams
-:since:  v0.1.00
+:since:  v0.2.00
 		"""
 
 		return len(self.video_streams)
@@ -392,7 +392,7 @@ Returns the number of video streams in the file.
 Load metadata into this metadata object.
 
 :return: (bool) True on success
-:since:  v0.1.00
+:since:  v0.2.00
 		"""
 
 		if ("_audio_streams" in data and "_other_streams" in data and "_text_streams" in data and "_video_streams" in data):

@@ -38,16 +38,16 @@ class AudioStreamMetadata(StreamMetadata):
 	"""
 This class provides methods for audio stream metadata.
 
-:author:     direct Netware Group
+:author:     direct Netware Group et al.
 :copyright:  direct Netware Group - All rights reserved
 :package:    pas
 :subpackage: media
-:since:      v0.1.00
+:since:      v0.2.00
 :license:    https://www.direct-netware.de/redirect?licenses;gpl
              GNU General Public License 2
 	"""
 
-	instance_class = "dNG.pas.data.media.AudioStreamMetadata"
+	instance_class = "dNG.data.media.AudioStreamMetadata"
 	"""
 The qualified name of the class.
 	"""
@@ -57,7 +57,7 @@ The qualified name of the class.
 Returns the bitrate.
 
 :return: (str) Audio bitrate; None if unknown
-:since:  v0.1.00
+:since:  v0.2.00
 	"""
 
 	get_bps = StreamMetadata._wrap_getter("bps")
@@ -65,7 +65,7 @@ Returns the bitrate.
 Returns the bits per sample.
 
 :return: (str) Bits per sample; None if undefined
-:since:  v0.1.00
+:since:  v0.2.00
 	"""
 
 	get_channels = StreamMetadata._wrap_getter("channels")
@@ -73,7 +73,7 @@ Returns the bits per sample.
 Returns the number of channels.
 
 :return: (str) Number of channels; None if undefined
-:since:  v0.1.00
+:since:  v0.2.00
 	"""
 
 	get_sample_rate = StreamMetadata._wrap_getter("sample_rate")
@@ -81,7 +81,7 @@ Returns the number of channels.
 Returns the sample rate in Hz.
 
 :return: (str) Sample rate; None if undefined
-:since:  v0.1.00
+:since:  v0.2.00
 	"""
 #
 
