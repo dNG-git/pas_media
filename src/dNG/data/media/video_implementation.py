@@ -31,8 +31,8 @@ https://www.direct-netware.de/redirect?licenses;gpl
 #echo(__FILEPATH__)#
 """
 
+from dNG.data.logging.log_line import LogLine
 from dNG.data.settings import Settings
-from dNG.runtime.value_exception import ValueException
 
 from .abstract_implementation import AbstractImplementation
 
@@ -64,7 +64,7 @@ Returns the media implementation class name based on the configuration set.
 		Settings.read_file("{0}/settings/pas_media.json".format(Settings.get("path_data")))
 
 		_return = Settings.get("pas_media_video_implementation", "")
-		if (_return == ""): raise ValueException("Media video implementation class is not configured")
+		if (_return == ""): LogLine.warning("Media video implementation class is not configured")
 
 		return _return
 	#

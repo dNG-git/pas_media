@@ -32,6 +32,7 @@ https://www.direct-netware.de/redirect?licenses;gpl
 """
 
 from dNG.module.named_loader import NamedLoader
+from dNG.runtime.not_implemented_class import NotImplementedClass
 from dNG.runtime.not_implemented_exception import NotImplementedException
 
 class AbstractImplementation(object):
@@ -50,19 +51,29 @@ implementation for media handling and transformation.
 	"""
 
 	@classmethod
-	def get_class(cls):
+	def get_class(cls, is_not_implemented_class_aware = False):
 	#
 		"""
 Returns an media implementation class based on the configuration set.
 
 :param cls: Python class
+:param is_not_implemented_class_aware: True to return
+       "dNG.runtime.NotImplementedClass" instead of None
 
-:return: (object) Media implementation class
+:return: (object) Media implementation class; None if not available
 :since:  v0.2.00
 		"""
 
 		implementation_class_name = cls._get_implementation_class_name()
-		return NamedLoader.get_class("dNG.data.media.{0}".format(implementation_class_name))
+
+		_return = (None
+		           if (implementation_class_name == "") else
+		           NamedLoader.get_class("dNG.data.media.{0}".format(implementation_class_name))
+		          )
+
+		if (_return is None and is_not_implemented_class_aware): _return = NotImplementedClass
+
+		return _return
 	#
 
 	@staticmethod
@@ -90,7 +101,7 @@ Returns an media implementation instance based on the configuration set.
 :since:  v0.2.00
 		"""
 
-		implementation_class = cls.get_class()
+		implementation_class = cls.get_class(True)
 		return implementation_class(*args, **kwargs)
 	#
 #
