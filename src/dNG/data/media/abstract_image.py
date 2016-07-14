@@ -132,27 +132,28 @@ Unsaved image width
 		"""
 	#
 
-	def _calculate_transformed_size(self):
+	def _calculate_transformed_size(self, image_size):
 	#
 		"""
 Calculates the transformed image size under the defined resize mode.
+
+:param image_size: Image size of the original image
 
 :return: (tuple) Tuple with width and height in pixel
 :since:  v0.2.00
 		"""
 
-		image_metadata = self.get_metadata()
-
-		image_height = image_metadata.get_height()
-		image_width = image_metadata.get_width()
+		image_height = image_size[1]
+		image_width = image_size[0]
 
 		resize_factor = 1
-		resize_factor_height = (self.unsaved_height / image_height)
-		resize_factor_width = (self.unsaved_width / image_width)
 
-		if (resize_factor_width > 1 or resize_factor_height > 1):
+		if (self.resize_mode != AbstractImage.RESIZE_CROP):
 		#
-			if (self.resize_mode != AbstractImage.RESIZE_CROP):
+			resize_factor_height = (self.unsaved_height / image_height)
+			resize_factor_width = (self.unsaved_width / image_width)
+
+			if (resize_factor_width > 1 or resize_factor_height > 1):
 			#
 				if (resize_factor_width > resize_factor_height):
 				#
@@ -169,20 +170,20 @@ Calculates the transformed image size under the defined resize mode.
 					                )
 				#
 			#
-		#
-		elif (resize_factor_width < resize_factor_height):
-		#
-			resize_factor = (resize_factor_width
-			                 if (self.resize_mode == AbstractImage.RESIZE_SCALED_FIT) else
-			                 resize_factor_height
-			                )
-		#
-		else:
-		#
-			resize_factor = (resize_factor_height
-			                 if (self.resize_mode == AbstractImage.RESIZE_SCALED_FIT) else
-			                 resize_factor_width
-			                )
+			elif (resize_factor_width < resize_factor_height):
+			#
+				resize_factor = (resize_factor_width
+				                 if (self.resize_mode == AbstractImage.RESIZE_SCALED_FIT) else
+				                 resize_factor_height
+				                )
+			#
+			else:
+			#
+				resize_factor = (resize_factor_height
+				                 if (self.resize_mode == AbstractImage.RESIZE_SCALED_FIT) else
+				                 resize_factor_width
+				                )
+			#
 		#
 
 		return ( int(image_width * resize_factor), int(image_height * resize_factor) )
