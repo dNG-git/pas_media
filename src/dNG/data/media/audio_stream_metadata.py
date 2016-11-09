@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-##j## BOF
 
 """
 direct PAS
@@ -34,8 +33,7 @@ https://www.direct-netware.de/redirect?licenses;gpl
 from .stream_metadata import StreamMetadata
 
 class AudioStreamMetadata(StreamMetadata):
-#
-	"""
+    """
 This class provides methods for audio stream metadata.
 
 :author:     direct Netware Group et al.
@@ -45,44 +43,42 @@ This class provides methods for audio stream metadata.
 :since:      v0.2.00
 :license:    https://www.direct-netware.de/redirect?licenses;gpl
              GNU General Public License 2
-	"""
+    """
 
-	instance_class = "dNG.data.media.AudioStreamMetadata"
-	"""
+    instance_class = "dNG.data.media.AudioStreamMetadata"
+    """
 The qualified name of the class.
-	"""
+    """
 
-	get_bitrate = StreamMetadata._wrap_getter("bitrate")
-	"""
+    get_bitrate = StreamMetadata._wrap_getter("bitrate")
+    """
 Returns the bitrate.
 
 :return: (str) Audio bitrate; None if unknown
 :since:  v0.2.00
-	"""
+    """
 
-	get_bps = StreamMetadata._wrap_getter("bps")
-	"""
+    get_bps = StreamMetadata._wrap_getter("bps")
+    """
 Returns the bits per sample.
 
 :return: (str) Bits per sample; None if undefined
 :since:  v0.2.00
-	"""
+    """
 
-	get_channels = StreamMetadata._wrap_getter("channels")
-	"""
+    get_channels = StreamMetadata._wrap_getter("channels")
+    """
 Returns the number of channels.
 
 :return: (str) Number of channels; None if undefined
 :since:  v0.2.00
-	"""
+    """
 
-	get_sample_rate = StreamMetadata._wrap_getter("sample_rate")
-	"""
+    get_sample_rate = StreamMetadata._wrap_getter("sample_rate")
+    """
 Returns the sample rate in Hz.
 
 :return: (str) Sample rate; None if undefined
 :since:  v0.2.00
-	"""
+    """
 #
-
-##j## EOF

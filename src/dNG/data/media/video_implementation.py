@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-##j## BOF
 
 """
 direct PAS
@@ -37,8 +36,7 @@ from dNG.data.settings import Settings
 from .abstract_implementation import AbstractImplementation
 
 class VideoImplementation(AbstractImplementation):
-#
-	"""
+    """
 "VideoImplementation" provides methods to load a configured implementation
 for video handling and transformation.
 
@@ -49,25 +47,22 @@ for video handling and transformation.
 :since:      v0.2.00
 :license:    https://www.direct-netware.de/redirect?licenses;gpl
              GNU General Public License 2
-	"""
+    """
 
-	@staticmethod
-	def _get_implementation_class_name():
-	#
-		"""
+    @staticmethod
+    def _get_implementation_class_name():
+        """
 Returns the media implementation class name based on the configuration set.
 
 :return: (str) Media implementation class name
 :since:  v0.2.00
-		"""
+        """
 
-		Settings.read_file("{0}/settings/pas_media.json".format(Settings.get("path_data")))
+        Settings.read_file("{0}/settings/pas_media.json".format(Settings.get("path_data")))
 
-		_return = Settings.get("pas_media_video_implementation", "")
-		if (_return == ""): LogLine.warning("Media video implementation class is not configured")
+        _return = Settings.get("pas_media_video_implementation", "")
+        if (_return == ""): LogLine.warning("Media video implementation class is not configured")
 
-		return _return
-	#
+        return _return
+    #
 #
-
-##j## EOF

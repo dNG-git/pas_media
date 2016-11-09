@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-##j## BOF
 
 """
 direct PAS
@@ -34,8 +33,7 @@ https://www.direct-netware.de/redirect?licenses;gpl
 from .abstract import Abstract
 
 class AbstractAudio(Abstract):
-#
-	"""
+    """
 Implementation independent audio class.
 
 :author:     direct Netware Group et al.
@@ -45,9 +43,7 @@ Implementation independent audio class.
 :since:      v0.2.00
 :license:    https://www.direct-netware.de/redirect?licenses;gpl
              GNU General Public License 2
-	"""
+    """
 
-	pass
+    pass
 #
-
-##j## EOF

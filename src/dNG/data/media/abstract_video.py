@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-##j## BOF
 
 """
 direct PAS
@@ -36,8 +35,7 @@ from dNG.runtime.not_implemented_exception import NotImplementedException
 from .abstract import Abstract
 
 class AbstractVideo(Abstract):
-#
-	"""
+    """
 Implementation independent video class.
 
 :author:     direct Netware Group et al.
@@ -47,19 +45,16 @@ Implementation independent video class.
 :since:      v0.2.00
 :license:    https://www.direct-netware.de/redirect?licenses;gpl
              GNU General Public License 2
-	"""
+    """
 
-	def get_thumbnail(self, mimetype = "image/jpeg"):
-	#
-		"""
+    def get_thumbnail(self, mimetype = "image/jpeg"):
+        """
 Returns a thumbnail of the given mimetype.
 
 :return: (object) Buffer object
 :since:  v0.2.00
-		"""
+        """
 
-		raise NotImplementedException()
-	#
+        raise NotImplementedException()
+    #
 #
-
-##j## EOF

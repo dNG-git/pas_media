@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-##j## BOF
 
 """
 direct PAS
@@ -34,8 +33,7 @@ https://www.direct-netware.de/redirect?licenses;gpl
 from .abstract_metadata import AbstractMetadata
 
 class ImageMetadata(AbstractMetadata):
-#
-	"""
+    """
 This class provides methods for image metadata.
 
 :author:     direct Netware Group et al.
@@ -45,52 +43,50 @@ This class provides methods for image metadata.
 :since:      v0.2.00
 :license:    https://www.direct-netware.de/redirect?licenses;gpl
              GNU General Public License 2
-	"""
+    """
 
-	instance_class = "dNG.data.media.ImageMetadata"
-	"""
+    instance_class = "dNG.data.media.ImageMetadata"
+    """
 The qualified name of the class.
-	"""
+    """
 
-	get_artist = AbstractMetadata._wrap_getter("artist")
-	"""
+    get_artist = AbstractMetadata._wrap_getter("artist")
+    """
 Returns an image embedded artist information if any.
 
 :return: (str) Artist information; None if undefined
 :since:  v0.2.00
-	"""
+    """
 
-	get_bpp = AbstractMetadata._wrap_getter("bpp")
-	"""
+    get_bpp = AbstractMetadata._wrap_getter("bpp")
+    """
 Returns the image bits per pixel value.
 
 :return: (int) Image bpp
 :since:  v0.2.00
-	"""
+    """
 
-	get_height = AbstractMetadata._wrap_getter("height")
-	"""
+    get_height = AbstractMetadata._wrap_getter("height")
+    """
 Returns the image height.
 
 :return: (int) Image height
 :since:  v0.2.00
-	"""
+    """
 
-	get_producer = AbstractMetadata._wrap_getter("producer")
-	"""
+    get_producer = AbstractMetadata._wrap_getter("producer")
+    """
 Returns the image device or software producer for the image.
 
 :return: (str) Mime type
 :since:  v0.2.00
-	"""
+    """
 
-	get_width = AbstractMetadata._wrap_getter("width")
-	"""
+    get_width = AbstractMetadata._wrap_getter("width")
+    """
 Returns the image width.
 
 :return: (int) Image width
 :since:  v0.2.00
-	"""
+    """
 #
-
-##j## EOF

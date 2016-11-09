@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-##j## BOF
 
 """
 direct PAS
@@ -35,8 +34,7 @@ from dNG.data.supports_mixin import SupportsMixin
 from dNG.runtime.not_implemented_exception import NotImplementedException
 
 class Abstract(SupportsMixin):
-#
-	"""
+    """
 This abstract class defines methods to open a file and get metadata for it.
 
 :author:     direct Netware Group et al.
@@ -46,61 +44,55 @@ This abstract class defines methods to open a file and get metadata for it.
 :since:      v0.2.00
 :license:    https://www.direct-netware.de/redirect?licenses;gpl
              GNU General Public License 2
-	"""
+    """
 
-	# pylint: disable=unused-argument
+    # pylint: disable=unused-argument
 
-	def get_metadata(self):
-	#
-		"""
+    def get_metadata(self):
+        """
 Returns the metadata for this URL.
 
 :return: (object) Metadata object
 :since:  v0.2.00
-		"""
+        """
 
-		raise NotImplementedException()
-	#
+        raise NotImplementedException()
+    #
 
-	def open_url(self, url):
-	#
-		"""
+    def open_url(self, url):
+        """
 Initializes an media instance for the given URL.
 
 :param url: URL
 
 :return: (bool) True on success
 :since:  v0.2.00
-		"""
+        """
 
-		return False
-	#
+        return False
+    #
 
-	def save(self):
-	#
-		"""
+    def save(self):
+        """
 Saves the media instance using the defined constraints.
 
 :since: v0.2.00
-		"""
+        """
 
-		raise NotImplementedException()
-	#
+        raise NotImplementedException()
+    #
 
-	@staticmethod
-	def is_mimetype_supported(mimetype):
-	#
-		"""
+    @staticmethod
+    def is_mimetype_supported(mimetype):
+        """
 Returns true if the given mime type is supported.
 
 :param mimetype: Mime type to check
 
 :return: (bool) True if supported
 :since:  v0.2.00
-		"""
+        """
 
-		return False
-	#
+        return False
+    #
 #
-
-##j## EOF

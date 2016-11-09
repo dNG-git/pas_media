@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-##j## BOF
 
 """
 direct PAS
@@ -34,8 +33,7 @@ https://www.direct-netware.de/redirect?licenses;gpl
 from .abstract_metadata import AbstractMetadata
 
 class StreamMetadata(AbstractMetadata):
-#
-	"""
+    """
 This class provides methods for any stream metadata.
 
 :author:     direct Netware Group et al.
@@ -45,28 +43,26 @@ This class provides methods for any stream metadata.
 :since:      v0.2.00
 :license:    https://www.direct-netware.de/redirect?licenses;gpl
              GNU General Public License 2
-	"""
+    """
 
-	instance_class = "dNG.data.media.StreamMetadata"
-	"""
+    instance_class = "dNG.data.media.StreamMetadata"
+    """
 The qualified name of the class.
-	"""
+    """
 
-	get_codec = AbstractMetadata._wrap_getter("codec")
-	"""
+    get_codec = AbstractMetadata._wrap_getter("codec")
+    """
 Returns the stream codec used as mime type notation.
 
 :return: (str) Stream codec
 :since:  v0.2.00
-	"""
+    """
 
-	get_codec_profile = AbstractMetadata._wrap_getter("codec_profile")
-	"""
+    get_codec_profile = AbstractMetadata._wrap_getter("codec_profile")
+    """
 Returns the stream codec profile.
 
 :return: (str) Stream codec profile
 :since:  v0.2.00
-	"""
+    """
 #
-
-##j## EOF

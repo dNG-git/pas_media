@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-##j## BOF
 
 """
 direct PAS
@@ -36,8 +35,7 @@ from dNG.runtime.not_implemented_class import NotImplementedClass
 from dNG.runtime.not_implemented_exception import NotImplementedException
 
 class AbstractImplementation(object):
-#
-	"""
+    """
 "AbstractImplementation" provides methods to load a configured
 implementation for media handling and transformation.
 
@@ -48,12 +46,11 @@ implementation for media handling and transformation.
 :since:      v0.2.00
 :license:    https://www.direct-netware.de/redirect?licenses;gpl
              GNU General Public License 2
-	"""
+    """
 
-	@classmethod
-	def get_class(cls, is_not_implemented_class_aware = False):
-	#
-		"""
+    @classmethod
+    def get_class(cls, is_not_implemented_class_aware = False):
+        """
 Returns an media implementation class based on the configuration set.
 
 :param cls: Python class
@@ -62,48 +59,44 @@ Returns an media implementation class based on the configuration set.
 
 :return: (object) Media implementation class; None if not available
 :since:  v0.2.00
-		"""
+        """
 
-		implementation_class_name = cls._get_implementation_class_name()
+        implementation_class_name = cls._get_implementation_class_name()
 
-		_return = (None
-		           if (implementation_class_name == "") else
-		           NamedLoader.get_class("dNG.data.media.{0}".format(implementation_class_name))
-		          )
+        _return = (None
+                   if (implementation_class_name == "") else
+                   NamedLoader.get_class("dNG.data.media.{0}".format(implementation_class_name))
+                  )
 
-		if (_return is None and is_not_implemented_class_aware): _return = NotImplementedClass
+        if (_return is None and is_not_implemented_class_aware): _return = NotImplementedClass
 
-		return _return
-	#
+        return _return
+    #
 
-	@staticmethod
-	def _get_implementation_class_name():
-	#
-		"""
+    @staticmethod
+    def _get_implementation_class_name():
+        """
 Returns the media implementation class name based on the configuration set.
 
 :return: (str) Media implementation class name
 :since:  v0.2.00
-		"""
+        """
 
-		raise NotImplementedException()
-	#
+        raise NotImplementedException()
+    #
 
-	@classmethod
-	def get_instance(cls, *args, **kwargs):
-	#
-		"""
+    @classmethod
+    def get_instance(cls, *args, **kwargs):
+        """
 Returns an media implementation instance based on the configuration set.
 
 :param cls: Python class
 
 :return: (object) Media implementation instance
 :since:  v0.2.00
-		"""
+        """
 
-		implementation_class = cls.get_class(True)
-		return implementation_class(*args, **kwargs)
-	#
+        implementation_class = cls.get_class(True)
+        return implementation_class(*args, **kwargs)
+    #
 #
-
-##j## EOF

@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-##j## BOF
 
 """
 direct PAS
@@ -34,8 +33,7 @@ https://www.direct-netware.de/redirect?licenses;gpl
 from .stream_metadata import StreamMetadata
 
 class VideoStreamMetadata(StreamMetadata):
-#
-	"""
+    """
 This class provides methods for video stream metadata.
 
 :author:     direct Netware Group et al.
@@ -45,52 +43,50 @@ This class provides methods for video stream metadata.
 :since:      v0.2.00
 :license:    https://www.direct-netware.de/redirect?licenses;gpl
              GNU General Public License 2
-	"""
+    """
 
-	instance_class = "dNG.data.media.VideoStreamMetadata"
-	"""
+    instance_class = "dNG.data.media.VideoStreamMetadata"
+    """
 The qualified name of the class.
-	"""
+    """
 
-	get_bitrate = StreamMetadata._wrap_getter("bitrate")
-	"""
+    get_bitrate = StreamMetadata._wrap_getter("bitrate")
+    """
 Returns the bitrate.
 
 :return: (str) Video bitrate; None if unknown
 :since:  v0.2.00
-	"""
+    """
 
-	get_bpp = StreamMetadata._wrap_getter("bpp")
-	"""
+    get_bpp = StreamMetadata._wrap_getter("bpp")
+    """
 Returns the image bits per pixel value.
 
 :return: (int) Image bpp
 :since:  v0.2.00
-	"""
+    """
 
-	get_framerate = StreamMetadata._wrap_getter("framerate")
-	"""
+    get_framerate = StreamMetadata._wrap_getter("framerate")
+    """
 Returns the framerate.
 
 :return: (str) Video framerate; None if unknown
 :since:  v0.2.00
-	"""
+    """
 
-	get_height = StreamMetadata._wrap_getter("height")
-	"""
+    get_height = StreamMetadata._wrap_getter("height")
+    """
 Returns the video height.
 
 :return: (int) Video stream height
 :since:  v0.2.00
-	"""
+    """
 
-	get_width = StreamMetadata._wrap_getter("width")
-	"""
+    get_width = StreamMetadata._wrap_getter("width")
+    """
 Returns the video width.
 
 :return: (int) Video stream width
 :since:  v0.2.00
-	"""
+    """
 #
-
-##j## EOF
