@@ -30,6 +30,8 @@ https://www.direct-netware.de/redirect?licenses;gpl
 #echo(__FILEPATH__)#
 """
 
+# pylint: disable=import-error, no-name-in-module
+
 from dNG.data.logging.log_line import LogLine
 from dNG.data.settings import Settings
 

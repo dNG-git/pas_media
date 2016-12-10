@@ -30,6 +30,8 @@ https://www.direct-netware.de/redirect?licenses;gpl
 #echo(__FILEPATH__)#
 """
 
+# pylint: disable=import-error, no-name-in-module
+
 from dNG.data.binary import Binary
 from dNG.data.json_resource import JsonResource
 from dNG.module.named_loader import NamedLoader
@@ -198,8 +200,6 @@ Load metadata into this metadata object.
 :return: (bool) True on success
 :since:  v0.2.00
         """
-
-        # pylint: disable=star-args
 
         self.url = data['_meta_url']
         del(data['_meta_url'])

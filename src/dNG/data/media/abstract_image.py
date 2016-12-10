@@ -30,6 +30,8 @@ https://www.direct-netware.de/redirect?licenses;gpl
 #echo(__FILEPATH__)#
 """
 
+# pylint: disable=import-error, no-name-in-module
+
 from dNG.runtime.not_implemented_exception import NotImplementedException
 
 from .abstract import Abstract
@@ -47,7 +49,7 @@ Implementation independent image class.
              GNU General Public License 2
     """
 
-    # pylint: disable=unused-argument
+    # pylint: disable=invalid-name, unused-argument
 
     COLORMAP_CMYK = 3
     """

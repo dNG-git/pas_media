@@ -30,6 +30,8 @@ https://www.direct-netware.de/redirect?licenses;gpl
 #echo(__FILEPATH__)#
 """
 
+# pylint: disable=import-error, no-name-in-module
+
 from dNG.module.named_loader import NamedLoader
 from dNG.runtime.not_implemented_class import NotImplementedClass
 from dNG.runtime.not_implemented_exception import NotImplementedException
@@ -60,6 +62,8 @@ Returns an media implementation class based on the configuration set.
 :return: (object) Media implementation class; None if not available
 :since:  v0.2.00
         """
+
+        # pylint: disable=assignment-from-no-return
 
         implementation_class_name = cls._get_implementation_class_name()
 

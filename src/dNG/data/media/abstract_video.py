@@ -30,6 +30,8 @@ https://www.direct-netware.de/redirect?licenses;gpl
 #echo(__FILEPATH__)#
 """
 
+# pylint: disable=import-error, no-name-in-module
+
 from dNG.runtime.not_implemented_exception import NotImplementedException
 
 from .abstract import Abstract
@@ -46,6 +48,8 @@ Implementation independent video class.
 :license:    https://www.direct-netware.de/redirect?licenses;gpl
              GNU General Public License 2
     """
+
+    # pylint: disable=unused-argument
 
     def get_thumbnail(self, mimetype = "image/jpeg"):
         """

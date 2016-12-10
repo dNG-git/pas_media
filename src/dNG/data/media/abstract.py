@@ -30,6 +30,8 @@ https://www.direct-netware.de/redirect?licenses;gpl
 #echo(__FILEPATH__)#
 """
 
+# pylint: disable=import-error, no-name-in-module
+
 from dNG.data.supports_mixin import SupportsMixin
 from dNG.runtime.not_implemented_exception import NotImplementedException
 
