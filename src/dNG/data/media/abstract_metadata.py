@@ -168,7 +168,10 @@ Returns the mime class.
 :since:  v0.2.00
         """
 
-        return self.data.get("mimeclass")
+        _return = self.data.get("mimeclass")
+        if (_return is None): _return = self.get_mimetype().split("/", 1)[0]
+
+        return _return
     #
 
     def get_mimetype(self):
@@ -179,7 +182,7 @@ Returns the mime type.
 :since:  v0.2.00
         """
 
-        return self.data.get("mimetype")
+        return self.data.get("mimetype", "application/octet-stream")
     #
 
     def get_url(self):
